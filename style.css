@@ -1,0 +1,639 @@
+/* ===========================================================
+   Cattery Okaukuejo — gedeeld stylesheet
+   Rustige, kleinschalige stijl: veel wit, mint-accent, sereen serif
+   =========================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Cormorant+Garamond:wght@400;500;600&family=Playfair+Display:wght@400;500;600&family=Jost:wght@300;400;500;600&display=swap');
+
+:root {
+  --mint: #a9d6c0;
+  --mint-soft: #cfe9dc;
+  --mint-deep: #6fae90;
+  --cream: #fdfcf9;
+  --paw: #e7b3ba;
+  --paw-line: #b9b3ad;
+  --text: #232520;
+  --heading: #4d534b;
+  --heading-gray: #7d8279;
+  --heading-dark: #384540;
+  --hairline: #e7e3db;
+  --white: #ffffff;
+
+  --font-display: 'Marcellus', serif;
+  --font-body: 'Playfair Display', serif;
+
+  --max-width: 1180px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  color: var(--text);
+  background: var(--cream);
+  font-weight: 400;
+  line-height: 1.65;
+  font-size: 16px;
+}
+
+img { max-width: 100%; display: block; }
+
+a { color: inherit; text-decoration: none; }
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  color: var(--heading-dark);
+  font-weight: 500;
+  margin: 0 0 0.5em 0;
+  line-height: 1.2;
+}
+
+h1 { font-size: 1.8rem; font-weight: 500; color: var(--heading-gray); }
+h2 { font-size: 1.5rem; }
+h3 { font-size: 1.15rem; }
+
+p { margin: 0 0 1em 0; }
+
+.container {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Focus visibility for keyboard users */
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--mint-deep);
+  outline-offset: 3px;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--hairline);
+  position: relative;
+  z-index: 50;
+}
+
+.header-inner {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 28px 40px 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo-link {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 26px;
+}
+
+.logo-full {
+  height: 92px;
+  width: auto;
+}
+
+.logo-mark {
+  width: 92px;
+  height: 92px;
+  flex-shrink: 0;
+}
+
+.logo-text {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 52px;
+  color: var(--heading-gray);
+  letter-spacing: 0.01em;
+  white-space: nowrap;
+}
+
+/* ---------- Nav ---------- */
+.main-nav {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid var(--hairline);
+  padding: 14px 0;
+}
+
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  gap: 6px;
+  margin: 0;
+  padding: 0;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.main-nav > ul > li {
+  position: relative;
+}
+
+.main-nav a,
+.main-nav .nav-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  padding: 10px 18px;
+  font-size: 0.85rem;
+  color: var(--heading);
+  letter-spacing: 0.01em;
+  border-radius: 6px;
+  cursor: default;
+}
+
+.main-nav a:hover,
+.main-nav li:hover > .nav-toggle {
+  color: var(--heading-dark);
+}
+
+.main-nav .current > a {
+  background: var(--mint);
+  color: var(--heading-dark);
+}
+
+.nav-toggle .arrow {
+  font-size: 0.65em;
+  color: var(--paw-line);
+  transform: translateY(1px);
+}
+
+/* dropdown */
+.has-dropdown .dropdown {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  text-align: left;
+  background: var(--white);
+  border: 1px solid var(--hairline);
+  box-shadow: 0 12px 24px rgba(56, 69, 64, 0.08);
+  min-width: 220px;
+  padding: 8px 0;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.15s ease;
+}
+
+.has-dropdown:hover .dropdown,
+.has-dropdown:focus-within .dropdown {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dropdown li a {
+  display: block;
+  text-align: left;
+  padding: 10px 18px;
+  white-space: nowrap;
+  border-bottom: none;
+  font-size: 0.9rem;
+}
+
+.dropdown li a:hover {
+  background: var(--mint-soft);
+  color: var(--heading-dark);
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: var(--mint);
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  align-items: stretch;
+  min-height: 620px;
+}
+
+.hero-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 60px 70px;
+  max-width: 620px;
+}
+
+.hero-text h1 {
+  margin-bottom: 0.55em;
+  font-size: 1.8rem;
+}
+
+.hero-photo {
+  position: relative;
+  overflow: hidden;
+  background: #10120f;
+}
+
+.hero-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.photo-placeholder {
+  width: 100%;
+  height: 100%;
+  min-height: 320px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #10120f;
+  color: #7c8279;
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  letter-spacing: 0.04em;
+  text-align: center;
+  padding: 20px;
+}
+
+/* ---------- Page hero (simple banner for inner pages) ---------- */
+.page-hero {
+  background: var(--mint);
+  padding: 56px 40px;
+  text-align: center;
+}
+
+.page-hero h1 { margin: 0; }
+
+/* ---------- Generic sections ---------- */
+.section {
+  padding: 80px 40px;
+}
+
+.section-narrow {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.section-label {
+  font-size: 0.8rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--mint-deep);
+  margin-bottom: 10px;
+  display: block;
+}
+
+.section-header {
+  text-align: center;
+  max-width: 640px;
+  margin: 0 auto 48px;
+}
+
+/* alternating background band */
+.band-soft {
+  background: var(--mint-soft);
+}
+
+/* ---------- Card grid ---------- */
+.grid {
+  display: grid;
+  gap: 32px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+}
+
+.grid-3 { grid-template-columns: repeat(3, 1fr); }
+.grid-2 { grid-template-columns: repeat(2, 1fr); }
+.grid-5 { grid-template-columns: repeat(5, 1fr); gap: 20px; }
+
+.card {
+  background: var(--white);
+  border: 1px solid var(--hairline);
+}
+
+a.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  transition: border-color 0.15s ease;
+}
+
+a.card:hover {
+  border-color: var(--mint-deep);
+}
+
+.card-photo {
+  aspect-ratio: 3 / 4;
+}
+
+.card-body {
+  padding: 24px;
+}
+
+.card h3 { margin-bottom: 0.35em; }
+
+.card p { font-size: 0.94rem; margin-bottom: 0; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-block;
+  padding: 13px 30px;
+  border: 1px solid var(--heading-dark);
+  color: var(--heading-dark);
+  font-size: 0.88rem;
+  letter-spacing: 0.03em;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.btn:hover {
+  background: var(--heading-dark);
+  color: var(--white);
+}
+
+.btn-primary {
+  background: var(--heading-dark);
+  color: var(--white);
+}
+
+.btn-primary:hover {
+  background: var(--mint-deep);
+  border-color: var(--mint-deep);
+}
+
+.checklist {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 24px;
+  max-width: 480px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.checklist li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.checklist li::before {
+  content: "✓";
+  color: var(--mint-deep);
+  font-weight: 500;
+  flex-shrink: 0;
+}
+
+.checklist.checklist-wrap li {
+  align-items: flex-start;
+  line-height: 1.6;
+}
+
+.checklist.checklist-wrap li::before {
+  margin-top: 2px;
+}
+
+.checklist-dot li::before {
+  content: "•";
+  color: var(--text-secondary);
+  font-size: 1.1em;
+  line-height: 1.3;
+}
+
+.btn-row {
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+}
+
+/* ---------- Signup form (kittenbeleid aanmeldformulier) ---------- */
+.signup-form {
+  display: flex;
+  flex-direction: column;
+  max-width: 480px;
+  margin-top: 24px;
+}
+
+.signup-form label {
+  font-size: 0.85rem;
+  color: var(--heading-dark);
+  margin-top: 16px;
+  margin-bottom: 6px;
+}
+
+.signup-form input,
+.signup-form textarea {
+  font-family: inherit;
+  font-size: 0.95rem;
+  padding: 11px 14px;
+  border: 1px solid var(--mint-deep);
+  border-radius: 4px;
+  background: var(--white);
+  color: var(--heading-dark);
+}
+
+.signup-form input:focus,
+.signup-form textarea:focus {
+  outline: 2px solid var(--mint-deep);
+}
+
+.signup-form button {
+  margin-top: 24px;
+  align-self: flex-start;
+}
+
+/* ---------- Simple list (kittenbeleid stappen, etc.) ---------- */
+.simple-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  max-width: 640px;
+}
+
+.simple-list li {
+  padding: 20px 0;
+  border-bottom: 1px solid var(--hairline);
+  display: flex;
+  gap: 20px;
+}
+
+.simple-list li:first-child { padding-top: 0; }
+
+.simple-list .num {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--mint-deep);
+  flex-shrink: 0;
+}
+
+/* ---------- Contact ---------- */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 60px;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  align-items: start;
+}
+
+.contact-details p { margin-bottom: 0.4em; }
+
+.field {
+  margin-bottom: 18px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.85rem;
+  margin-bottom: 6px;
+  color: var(--heading);
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid var(--hairline);
+  background: var(--white);
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  color: var(--text);
+}
+
+.field textarea { resize: vertical; min-height: 120px; }
+
+/* ---------- Footer ---------- */
+.site-footer {
+  background: var(--heading-dark);
+  color: var(--mint-soft);
+  padding: 18px 40px;
+  text-align: center;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+}
+
+.site-footer .footer-badge {
+  height: 60px;
+  width: auto;
+  display: block;
+  margin: 0;
+  opacity: 0.95;
+  flex-shrink: 0;
+}
+
+.footer-socials {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.footer-socials a {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--mint);
+  opacity: 0.85;
+  transition: opacity 0.15s ease;
+}
+
+.footer-socials a:hover {
+  opacity: 1;
+}
+
+.footer-socials svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* ---------- Language toggle ---------- */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  margin-left: 18px;
+  flex-shrink: 0;
+}
+
+.lang-switch button {
+  background: none;
+  border: 1px solid var(--hairline);
+  color: var(--heading-gray);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  padding: 5px 11px;
+  border-radius: 4px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: background 0.15s ease, color 0.15s ease;
+}
+
+.lang-switch button.active {
+  background: var(--mint);
+  color: var(--heading-dark);
+  border-color: var(--mint);
+}
+
+[data-en] { display: none; }
+body.lang-en [data-nl] { display: none; }
+body.lang-en [data-en] { display: revert; }
+
+.site-footer .footer-logo {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: var(--mint);
+  margin-bottom: 0;
+  opacity: 0.85;
+}
+
+.site-footer a:hover { color: var(--white); }
+
+.footer-note {
+  color: var(--mint-soft);
+  opacity: 0.7;
+  font-size: 0.72rem;
+  margin: 0;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 860px) {
+  .hero { grid-template-columns: 1fr; }
+  .hero-text { padding: 44px 28px; }
+  .hero-photo { min-height: 280px; }
+  .grid-3, .grid-2 { grid-template-columns: 1fr; }
+  .grid-5 { grid-template-columns: repeat(2, 1fr); }
+  .photo-masonry { columns: 4; }
+}
+@media (max-width: 560px) {
+  .photo-masonry { columns: 1; }
+  .grid-5 { grid-template-columns: 1fr; }
+  .contact-grid { grid-template-columns: 1fr; }
+  h1 { font-size: 2.1rem; }
+  .hero-text h1 { font-size: 2.1rem; }
+  .section { padding: 56px 24px; }
+  .header-inner { padding: 22px 20px 0; }
+  .main-nav a, .main-nav .nav-toggle { padding: 10px 12px; font-size: 0.85rem; }
+  .logo-text { font-size: 2rem; }
+  .logo-mark { width: 56px; height: 56px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  * { transition: none !important; }
+}
+
+/* ---------- Disease/health sub-sections ---------- */
+.disease-block {
+  border-left: 3px solid var(--mint);
+  padding-left: 20px;
+  margin: 28px 0;
+}
+
+.disease-block h3 {
+  color: var(--mint-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 1rem;
+  margin-bottom: 0.5em;
+}
+
+.disease-block p { margin-bottom: 0.75em; }
+.disease-block p:last-child { margin-bottom: 0; }
