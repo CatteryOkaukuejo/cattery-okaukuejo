@@ -165,29 +165,55 @@
     <h2 data-en>Application form</h2>
     <p data-nl>Heb je interesse in een van onze kittens? Laat het ons weten via onderstaand formulier.</p>
     <p data-en>Interested in one of our kittens? Let us know using the form below.</p>
-    <form action="mailto:catteryokaukuejo@gmail.com" method="post" enctype="text/plain" class="signup-form">
+    <form class="signup-form" id="aanmeldForm" name="kitten-aanmelding" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+      <input type="hidden" name="form-name" value="kitten-aanmelding">
+      <p style="display:none;"><label>Niet invullen: <input name="bot-field"></label></p>
       <label for="naam" data-nl>Naam</label>
       <label for="naam" data-en>Name</label>
-      <input type="text" id="naam" name="Naam" required>
+      <input type="text" id="naam" name="naam" required>
 
       <label for="email" data-nl>E-mailadres</label>
       <label for="email" data-en>Email address</label>
-      <input type="email" id="email" name="E-mailadres" required>
+      <input type="email" id="email" name="email" required>
 
       <label for="telefoon" data-nl>Telefoonnummer</label>
       <label for="telefoon" data-en>Phone number</label>
-      <input type="tel" id="telefoon" name="Telefoonnummer">
+      <input type="tel" id="telefoon" name="telefoon">
 
       <label for="voorkeur" data-nl>Voorkeur (geslacht/kleur/haarlengte/nestje)</label>
       <label for="voorkeur" data-en>Preference (gender/colour/coat length/litter)</label>
-      <input type="text" id="voorkeur" name="Voorkeur">
+      <input type="text" id="voorkeur" name="voorkeur">
 
       <label for="bericht" data-nl>Bericht</label>
       <label for="bericht" data-en>Message</label>
-      <textarea id="bericht" name="Bericht" rows="4"></textarea>
+      <textarea id="bericht" name="bericht" rows="4"></textarea>
 
       <button type="submit" style="display:inline-block;background:var(--mint);color:var(--heading-dark);padding:14px 22px;border-radius:4px;font-weight:500;border:none;font-family:inherit;font-size:0.95rem;cursor:pointer;"><span data-nl>Versturen</span><span data-en>Submit</span></button>
     </form>
+    <div id="aanmeldSuccess" style="display:none;background:var(--mint);color:var(--heading-dark);padding:22px;border-radius:4px;font-weight:500;">
+      <p data-nl style="margin:0;">Bedankt voor je aanmelding! We nemen zo snel mogelijk contact met je op.</p>
+      <p data-en style="margin:0;">Thank you for your application! We'll get back to you as soon as possible.</p>
+    </div>
+    <script>
+    (function() {
+      var form = document.getElementById('aanmeldForm');
+      if (!form) return;
+      form.addEventListener('submit', function(e) {
+        e.preventDefault();
+        var data = new FormData(form);
+        fetch('/', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+          body: new URLSearchParams(data).toString()
+        }).then(function() {
+          form.style.display = 'none';
+          document.getElementById('aanmeldSuccess').style.display = 'block';
+        }).catch(function() {
+          alert('Er ging iets mis bij het versturen. Probeer het later nogmaals of mail ons direct.');
+        });
+      });
+    })();
+    </script>
   </div>
 </section>
 
